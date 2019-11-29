@@ -1,0 +1,447 @@
+////SASS Mixins Library.
+
+//  fuente minima para moviles, en botones de click/touch
+$base-font-size: 16px !default;
+
+//mixin para border radius iguales
+  //p.e
+  // @include box-border-radius(3px);
+  // resultado
+  // -webkit-border-radius: 3px;
+  //    -moz-border-radius: 3px;
+  //     -ms-border-radius: 3px;
+  //      -o-border-radius: 3px;
+  //         border-radius: 3px;
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  -o-border-radius: $radius;
+  border-radius: $radius;
+}
+//mixin para border radius definidos
+  //p.e
+  // @include box-border-radius-d(3px,1px, 1px, 0px);
+  // resultado
+  // -webkit-border-radius: 3px 1px 1px 0px;
+  //    -moz-border-radius: 3px 1px 1px 0px;
+  //     -ms-border-radius: 3px 1px 1px 0px;
+  //      -o-border-radius: 3px 1px 1px 0px;
+  //         border-radius: 3px 1px 1px 0px;
+@mixin border-radius-d($a,$b,$c,$d) {
+  -webkit-border-radius: $a $b $c $d;
+  -moz-border-radius: $a $b $c $d;
+  border-radius: $a $b $c $d;
+}
+
+//****************************************
+//        border radius por orientacion
+// top ,right, bottom, left
+//****************************************/
+
+//Mixin para Border radius top->(left/right)
+//top left      o===========o top right
+//              |contenido..|
+//bottom left   |___________| bottom right
+  //p,e:
+  //@include border-top-radius(10px);
+  //resultado:
+  //  -moz-border-top-left-radius: 10px;
+  //  -moz-border-top-right-radius: 10px;
+  //  -webkit-border-top-left-radius: 10px;
+  //  -webkit-border-top-right-radius: 10px;
+  //  border-top-left-radius: 10px;
+  //  border-top-right-radius: 10px;
+@mixin border-top-radius($radius) {
+  -webkit-border-top-right-radius:  $radius;
+  -moz-border-top-right-radius:     $radius;
+  border-top-right-radius:          $radius;
+  -webkit-border-top-left-radius:   $radius;
+  -moz-border-top-left-radius:      $radius;
+  border-top-left-radius:           $radius;
+}
+//Mixin para Border radius right->(top/bottom)
+//top left      ============o top right
+//              |contenido..|
+//bottom left   ============o bottom right
+  //p,e:
+  //@include border-right-radius(10px);
+  //resultado:
+  //  -moz-border-bottom-right-radius:    10px;
+  //  -moz-border-top-right-radius:       10px;
+  //  -webkit-border-bottom-right-radius: 10px;
+  //  -webkit-border-top-right-radius:    10px;
+  //  border-bottom-right-radius:         10px;
+  //  border-top-right-radius:            10px;
+@mixin border-right-radius($radius) {
+  -moz-border-bottom-right-radius:    $radius;
+  -moz-border-top-right-radius:       $radius;
+  -webkit-border-bottom-right-radius: $radius;
+  -webkit-border-top-right-radius:    $radius;
+  border-bottom-right-radius:         $radius;
+  border-top-right-radius:            $radius;
+}
+//Mixin para Border radius bottom->(left/right)
+//top left      ============= top right
+//              |contenido..|
+//bottom left   o===========o bottom right
+  //p,e:
+  //@include border-bottom-radius(10px);
+  //resultado:
+  //  -moz-border-bottom-left-radius:       10px;
+  //  -moz-border-bottom-right-radius:      10px;
+  //  -webkit-border-bottom-left-radius:    10px;
+  //  -webkit-border-bottom-right-radius:   10px;
+  //  border-bottom-left-radius:            10px;
+  //  border-bottom-right-radius:           10px;
+@mixin border-bottom-radius($radius) {
+  -moz-border-bottom-left-radius:     $radius;
+  -moz-border-bottom-right-radius:    $radius;
+  -webkit-border-bottom-left-radius:  $radius;
+  -webkit-border-bottom-right-radius: $radius;
+  border-bottom-left-radius:          $radius;
+  border-bottom-right-radius:         $radius;
+}
+//Mixin para Border radius left->(top/bottom)
+//top right     o============ top left
+//              |contenido..|
+//top right     o============ top left
+  //p,e:
+  //@include border-left-radius(10px);
+  //resultado:
+  //  -moz-border-bottom-left-radius:    10px;
+  //  -moz-border-top-left-radius:       10px;
+  //  -webkit-border-bottom-left-radius: 10px;
+  //  -webkit-border-top-left-radius:    10px;
+  //  border-bottom-left-radius:         10px;
+  //  border-top-left-radius:            10px;
+@mixin border-left-radius($radius) {
+  -moz-border-bottom-left-radius:     $radius;
+  -moz-border-top-left-radius:        $radius;
+  -webkit-border-bottom-left-radius:  $radius;
+  -webkit-border-top-left-radius:     $radius;
+  border-bottom-left-radius:          $radius;
+  border-top-left-radius:             $radius;
+}
+//mixin box-sizing (modelo de caja)
+  //p.e
+  // @include box-sizing(border-box);// content-box
+  // resultado
+  // -webkit-box-sizing: border-box;
+  //    -moz-box-sizing: border-box;
+  //         box-sizing: border-box;
+@mixin box-sizing($sizing) {
+  -webkit-box-sizing: $sizing;/* Safari 3-4, also probably droppable */
+  -moz-box-sizing: $sizing;/* Firefox 1, probably can drop this */
+  box-sizing: $sizing;/* Everything else */
+}
+//mixin para sombra de texto
+  //p.e:
+  // @include text-shadow(1px,1px, 5px, pink);
+  // resultado:
+  // text-shadow: 1px 1px 5px pink;
+@mixin text-shadow($x,$y,$dif,$c){
+  // soportado desde IE10
+  text-shadow: $x $y $dif $c;
+}
+//mixin para sombra de caja
+  //p.e:
+  //@include box-shadow(3px 3px 5px 6px #ccc); 
+  //resultado
+  // -webkit-box-shadow: 3px 3px 5px 6px #ccc;  
+  // -moz-box-shadow:    3px 3px 5px 6px #ccc;  
+  // box-shadow:         3px 3px 5px 6px #ccc;  
+@mixin box-shadow($x,$y,$dif,$ent,$c){
+  -webkit-box-shadow:   $x $y $dif $ent $c;/* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow:      $x $y $dif $ent $c;/* Firefox 3.5 - 3.6 */
+  box-shadow:           $x $y $dif $ent $c;/* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */          
+}
+//mixin para sombra de caja adentro
+  //p.e:
+  //@include box-shadow-i(3px 3px 5px 6px #ccc); 
+  //resultado
+  // -webkit-box-shadow: inset 3px 3px 5px 6px #ccc;  
+  // -moz-box-shadow:    inset 3px 3px 5px 6px #ccc;  
+  // box-shadow:         inset 3px 3px 5px 6px #ccc;  
+@mixin box-shadow-i($x,$y,$dif,$ent,$c){
+  -webkit-box-shadow:   inset $x $y $dif $ent $c;/* Safari 3-4, iOS 4.0.2 - 4.2, Android 2.3+ */
+  -moz-box-shadow:      inset $x $y $dif $ent $c;/* Firefox 3.5 - 3.6 */
+  box-shadow:           inset $x $y $dif $ent $c;/* Opera 10.5, IE 9, Firefox 4+, Chrome 6+, iOS 5 */          
+}
+//sombra fancy google plus
+  //pe: @include sombra-fancy();
+  //resultado
+  //-webkit-box-shadow: 0 2px 40px 0 rgba(0,0,0,.4);
+  //-moz-box-shadow: 0 2px 40px 0 rgba(0,0,0,.4);
+  //box-shadow: 0 2px 40px 0 rgba(0,0,0,.4);
+@mixin sombra-fancy(){
+  -webkit-box-shadow: 0 2px 40px 0 rgba(0,0,0,.4);
+  -moz-box-shadow: 0 2px 40px 0 rgba(0,0,0,.4);
+  box-shadow: 0 2px 40px 0 rgba(0,0,0,.4);
+}
+// Mixin para opacidad
+@mixin opacity($opacity) {
+  // Theoretically for IE 8 & 9 (more valid) 
+  // ...but not required as filter works too 
+  // should come BEFORE filter 
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$opacity * 100})";
+  // This works in IE 8 & 9 too 
+  // ... but also 5, 6, 7 
+  filter: alpha(opacity=#{$opacity * 100}); // IE 5-7
+  // Modern Browsers 
+  opacity: $opacity;
+}
+
+//centrado absoluto de algun elemento (container position:relative)
+@mixin absolute-center() {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  margin: auto;
+}
+//centrado absoluto de algun elemento top (container position:relative)
+@mixin absolute-center-top() {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+}
+//centrado absoluto de algun elemento bottom (container position:relative)
+@mixin absolute-center-bottom() {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}
+
+/* BACKGROUND GRADIENT */
+// p,e:
+//@include background-gradient(white,black);
+@mixin background-gradient($startColor: #FFFFFF, $endColor: #000000) {
+  background-color: $startColor;
+  background-image: -webkit-gradient(linear, left top, left bottom, from($startColor), to($endColor));
+  background-image: -webkit-linear-gradient(top, $startColor, $endColor);
+  background-image:    -moz-linear-gradient(top, $startColor, $endColor);
+  background-image:     -ms-linear-gradient(top, $startColor, $endColor);
+  background-image:      -o-linear-gradient(top, $startColor, $endColor);
+  background-image:         linear-gradient(top, $startColor, $endColor);
+  filter:            progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$startColor}', endColorStr='#{$endColor}');//gradient type = 0 para vertical IE
+}
+
+/* BACKGROUND HORIZONTAL */
+// p,e:
+//@include background-horizontal(white,black);
+@mixin background-horizontal($startColor: #FFFFFF, $endColor: #000000) {
+  background-color: $startColor;
+  background-image: -webkit-gradient(linear, left top, right top, from($startColor), to($endColor));
+  background-image: -webkit-linear-gradient(left, $startColor, $endColor);
+  background-image:    -moz-linear-gradient(left, $startColor, $endColor);
+  background-image:     -ms-linear-gradient(left, $startColor, $endColor);
+  background-image:      -o-linear-gradient(left, $startColor, $endColor);
+  background-image:         linear-gradient(left, $startColor, $endColor);
+  filter:            progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$startColor}', endColorStr='#{$endColor}', gradientType='1');//gradient type = 1 para horizontal IE
+}
+
+/* BACKGROUND RADIAL */
+// p,e:
+//@include background-radial(white,black);
+@mixin background-radial($startColor: #FFFFFF, $startPos: 0%, $endColor: #000000, $endPos:100%) {
+    background: -moz-radial-gradient(center, ellipse cover, $startColor $startPos, $endColor $endPos);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop($startPos,$startColor), color-stop($endPos,$endColor));
+    background: -webkit-radial-gradient(center, ellipse cover, $startColor $startPos,$endColor $endPos);
+    background: -o-radial-gradient(center, ellipse cover, $startColor $startPos,$endColor $endPos);
+    background: -ms-radial-gradient(center, ellipse cover, $startColor $startPos,$endColor $endPos);
+    background: radial-gradient(ellipse at center, $startColor $startPos,$endColor $endPos);
+}
+
+
+// mixin para font face,
+// verificar en el archivo fuente.svg que el nombre(#id) sea el mismo
+// @include font-face('gotham', '/fonts/gotham');
+@mixin font-face($font-name, $file-name, $weight: normal, $style: normal) {
+  @font-face {
+    font-family: quote($font-name);
+    src: url($file-name + '.eot');
+    src: url($file-name + '.eot?#iefix')          format('embedded-opentype'),
+         url($file-name + '.woff')                format('woff'),
+         url($file-name + '.ttf')                 format('truetype'),
+         url($file-name + '.svg##{$font-name}')   format('svg');
+    font-weight: $weight;
+    font-style: $style;
+  }
+}
+// mixin para puntos suspensivos (excendente texto)
+  // p,e:
+  //  Lorem ipsum dol...
+  // resultado:
+  //  .texto{
+  //   ..........
+  //   ............
+  //   overflow: hidden;
+  //   text-overflow: ellipsis;
+  //   white-space: nowrap;
+  // }
+@mixin text-truncate {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+}
+
+// clearfix para contenedores de elementos flotantes (boilerplate y bootstrap lo implementan)
+  //  ******* container *******    ********** container ***********
+  //  * =texto  =========== = *    *  texto    ================== *
+  //  *************************    *           =     img        = *
+  //            =   img     =      *           =                = *
+  //            = ===========      *           ================== *
+  //                               ********************************
+  //p,e:
+  //  @include clearfix();
+  //resultado:
+  //  .container{
+  //  
+  //  }
+@mixin clearfix{
+  &:after,&:before{
+    content: " "; /* 1 */
+    display: table; /* 2 */
+  }
+  &:after{
+    clear: both;
+  }
+}
+
+//****************************************************************************************************
+//*       seleccion de texto            
+//*  general,particular, desactivar general, desactivar particular, activar particular
+//****************************************************************************************************
+
+// seleccion de texto en general(todo el DOM)
+// support ie9+, No iOS (iPhone,iPad..)
+
+@mixin selection-g($bgc,$tc){
+  ::-moz-selection { 
+    background: $bgc;
+    color: $tc;
+  }
+  ::selection { 
+    background: $bgc;
+    color: $tc;
+  }
+}
+// seleccion de texto en particular (a un elemento)
+@mixin selection-p(){
+  &::-moz-selection { 
+    background: $bgc;
+    color: $tc; 
+  }
+  &::selection { 
+    background: $bgc;
+    color: $tc;
+  }
+}
+//desactivar ::selection en general (todo el DOM)
+@mixin noSelection-g(){
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+//desactivar ::selection en particular (a un elemento)
+@mixin noSelection-p(){
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+//activar ::selection en un elemento en particular
+@mixin activate-Selection-p(){
+  -webkit-touch-callout: text;
+  -webkit-user-select: text;
+  -khtml-user-select: text;
+  -moz-user-select: text;
+  -o-user-select: text;
+  user-select: text;
+}
+
+
+// box-shadow material design
+// levels 1,2,3,4,5
+// Author: Florian Kutschera (@gefangenimnetz), Conceptboard GmbH (@conceptboardapp)
+//
+// p,e:
+// .card {
+//     width: 95px;
+//     height: 95px;
+//     background: #f4f4f4;
+//     -webkit-transition: all 250ms;
+//     -moz-transition: all 250ms;
+//     transition: all 250ms;
+//    .BoxShadowHelper(1);
+//     &:hover {
+//         .BoxShadowHelper(3);
+//         -webkit-transform: translateY(-5px);
+//         -moz-transform: translateY(-5px);
+//         transform: translateY(-5px);
+//     }
+// }
+//resultado:
+//.card {
+//    width: 95px;
+//    height: 95px;
+//    background: #f4f4f4;
+//    -webkit-transition: all 250ms;
+//    -moz-transition: all 250ms;
+//    transition: all 250ms;
+//    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+//}
+//.card:hover {
+//    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+//    -webkit-transform: translateY(-5px);
+//    -moz-transform: translateY(-5px);
+//    transform: translateY(-5px);
+// }
+//
+ 
+@mixin BoxShadowMaterial($level: 1){
+    @if $level == 1 {
+        -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+        -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+        box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    }
+    @else if $level == 2 {
+        -moz-box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+        -webkit-box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+        box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    }
+    @else if $level == 3 {
+        -moz-box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+        -webkit-box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    }
+    @else if $level == 4 {
+        -moz-box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+        -webkit-box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    }
+    @else if $level == 5 {
+      -moz-box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+      -webkit-box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+      box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    }
+}
+
+
+
+
+
+
+
