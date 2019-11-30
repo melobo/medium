@@ -307,6 +307,10 @@ body {
         color: $base-color-gray;
     }
 }
+.ctn__like,
+.ctn__history{
+    background-color: $base-color-sidebar;
+}
 
 
 // Responsive section
