@@ -30,7 +30,10 @@ body {
 .color__green{
     color: $base-color-green;
 }
-
+[class^="icon-"]:hover, [class*=" icon-"]:hover{
+    transition: all linear .25s;
+    color: $base-color-black;
+}
 
 // container max-width 1072px
 .container {
@@ -71,6 +74,14 @@ body {
     white-space: nowrap !important;
     text-overflow: ellipsis !important;
     overflow: hidden !important;
+}
+.category_number{
+    color: $base-color-gray-light;
+}
+.title__section{
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: $base-color-black;
 }
 
 .options___user {
@@ -254,8 +265,51 @@ body {
     margin: 24px auto;
 }
 
-// Responsive file
+.head__Sidebar{
+    
+    padding: 1rem;
+    .title__head__sidebar{
+        color: $base-color-black;
+        font-weight: 600;
+    }
+    .image__head__sidebar{
+        width: 135px;
+    }
+}
+.head__Sidebar.network{
+    background-color: $base-color-green-light;
+}
+.head__Sidebar.history{
+    background-color:$base-color-yellow-light;
+}
+.icon__book{
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    margin-left: 2rem;
+    margin-right: 1rem;
+    line-height: 2rem;
+    text-align: center;
+    font-size: 1rem;
+    background-color: #fff;
+    border: 1px solid $base-color-gray-light;
+    @include border-radius(50%);
+    span{
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 1rem;
+    }
+}
 
+.footer li{
+    list-style: none;
+    a{
+        color: $base-color-gray;
+    }
+}
+
+
+// Responsive section
 @media screen and (min-width: 768px) {
     .logo__header {
         max-height: 22px;
@@ -281,6 +335,9 @@ body {
 
         .title__item {
             font-size: 1.5rem;
+            &.small{
+                font-size: 1.125rem;
+            }
         }
         &.small{
             .title__item{
@@ -293,6 +350,9 @@ body {
             .description{
                 display: none !important;
             }
+        }
+        .category_number{
+            font-size: 2.5rem;
         }
     }
 }
