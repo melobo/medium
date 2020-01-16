@@ -45,8 +45,6 @@ const printPosts = () => {
                                     <span class="read">10 min read</span>
                                     <span class="icon-star1 "></span>
                                 </p>
-
-
                             </div>
                             <div class="mt-3 ml-2">
                                 <span class="icon-bookmark-o"></span>
